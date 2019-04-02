@@ -45,11 +45,10 @@ function loadPrevPokemon(x) {
     xhr.onload = function() {
         if (this.status == 200) {
             let pokEvol = JSON.parse(this.response);
-            let urlPic = pokEvol.evolves_from_species.url;
-            console.log(urlPic);
+            let pokName = pokEvol.evolves_from_species.name;
 
-            page.innerHTML += pokEvol.evolves_from_species.name;
-            loadPrevPokePicture(urlPic);
+            page.innerHTML += pokName;
+            loadPrevPokePicture(pokName);
         }
     }
 
@@ -59,12 +58,14 @@ function loadPrevPokemon(x) {
 function loadPrevPokePicture(y) {
     const xhr = new XMLHttpRequest();
 
-    xhr.open("GET", y, true);
+    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/" + y, true);
 
     xhr.onload = function() {
         if (this.status == 200) {
             let pokePic = JSON.parse(this.response);
-            console.log(pokePic);
+            console.log(pokePic.sprites.front_default);
+
+            page.innerHTML += `<img src ="${pokePic.sprites.front_default}"</img>`;
         }
     }
 
