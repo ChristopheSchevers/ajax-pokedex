@@ -1,6 +1,8 @@
 document.getElementById("button").addEventListener("click", loadPokemon);
 
-const page = document.getElementById("output");
+const info = document.getElementById("pokeInfo");
+const pokeImg = document.getElementById("pokeImg");
+const prevPokemon = document.getElementById("prevPokemon");
 
 function loadPokemon() {
     let pokemon = document.getElementById("search").value;
@@ -17,8 +19,10 @@ function loadPokemon() {
             let url = pokeFile.species.url;
             console.log(url);
             
+            pokeImg.removeAttribute("hidden");
+            pokeImg.setAttribute("src", pokeFile.sprites.front_default);
+            
             let output = `<ul>
-            <li><img src="${pokeFile.sprites.front_default}"></li>
             <li>Id: ${pokeFile.id}</li>
             <li>Moves:
             <ul>
@@ -29,7 +33,8 @@ function loadPokemon() {
             </ul>
             </li>`;
             
-            page.innerHTML = output;
+            info.innerHTML = output;
+            
             loadPrevPokemon(url);
         }
     }
@@ -45,10 +50,14 @@ function loadPrevPokemon(x) {
     xhr.onload = function() {
         if (this.status == 200) {
             let pokEvol = JSON.parse(this.response);
-            let pokName = pokEvol.evolves_from_species.name;
-
-            page.innerHTML += pokName;
-            loadPrevPokePicture(pokName);
+            
+            if (pokEvol.evolves_from_species == null) {
+                prevPokemon.innerHTML = `No previous form`;
+            } else {
+                let pokName = pokEvol.evolves_from_species.name;
+                prevPokemon.innerHTML = `Previous form:<br>${pokName}`;
+                loadPrevPokePicture(pokName);
+            }
         }
     }
 
@@ -65,7 +74,9 @@ function loadPrevPokePicture(y) {
             let pokePic = JSON.parse(this.response);
             console.log(pokePic.sprites.front_default);
 
-            page.innerHTML += `<img src ="${pokePic.sprites.front_default}"</img>`;
+            let img = document.createElement("img");
+            img.setAttribute("src", pokePic.sprites.front_default);
+            prevPokemon.appendChild(img);
         }
     }
 

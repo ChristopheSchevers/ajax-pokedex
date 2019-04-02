@@ -4,15 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>AJAX-powered Pokédex</title>
 </head>
 <body>
-    <input id="search" type="text">
-    <button id="button">Click me</button>
+
+    <div class="wrapper">
+        <div class="pokedex">
+            <div class="left">
+                <div class="screen rounded">
+                    <img id="pokeImg" alt="Picture of Pokemon" hidden>
+                </div>
+                <input class="rounded" id="search" type="text">
+                <button class="rounded" id="button">Search</button>
+            </div>
+            <div class="right">
+                <div id="pokeInfo" class="screen rounded"></div>
+                <div id="prevPokemon" class="evol screen rounded"></div>
+            </div>
+        </div>
+    </div>
+
 
     <div id="output"></div>
-    <div id="outputE"></div>
     
-    <script type="text/javascript" src="main.js"></script>
+    
+    <script type="text/javascript" src="assets/main.js"></script>
 </body>
 </html>

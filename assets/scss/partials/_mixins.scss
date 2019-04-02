@@ -1,0 +1,5 @@
+@mixin innershadow ($property) {
+    -moz-box-shadow: inset $property;
+    -webkit-box-shadow: inset $property;
+    box-shadow: inset $property;
+}
