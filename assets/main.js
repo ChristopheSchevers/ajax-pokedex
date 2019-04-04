@@ -31,6 +31,7 @@ function loadPokemon() {
             // Output for info screen
             let output = `<ul>
             <li>Id: ${pokeFile.id}</li>
+            <li>Name: ${pokeFile.name}</li>
             <li>Moves:
             <ul>
             ${moveGen()}
