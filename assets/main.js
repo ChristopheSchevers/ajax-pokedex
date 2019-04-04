@@ -22,17 +22,28 @@ function loadPokemon() {
             pokeImg.removeAttribute("hidden");
             pokeImg.setAttribute("src", pokeFile.sprites.front_default);
             
+            
             let output = `<ul>
             <li>Id: ${pokeFile.id}</li>
             <li>Moves:
             <ul>
-            <li>${pokeFile.moves[0].move.name}</li>
-            <li>${pokeFile.moves[1].move.name}</li>
-            <li>${pokeFile.moves[2].move.name}</li>
-            <li>${pokeFile.moves[3].move.name}</li>
+            ${moveGen()}
             </ul>
             </li>`;
             
+            function moveGen() {
+                if (pokeFile.moves.length <= 4) {
+                    for (i = 0; i < pokeFile.moves.length; i++) {
+                        return `<li>${pokeFile.moves[i].move.name}</li>`;
+                    }
+                } else {
+                    return `<li>${pokeFile.moves[0].move.name}</li>
+                    <li>${pokeFile.moves[1].move.name}</li>
+                    <li>${pokeFile.moves[2].move.name}</li>
+                    <li>${pokeFile.moves[3].move.name}</li>`;
+                }
+            }
+
             info.innerHTML = output;
             
             loadPrevPokemon(url);

@@ -85,6 +85,10 @@ body, html {
                 border: 1px solid #222;
                 @include innershadow(0 0 10px #000);
                 font-family: 'Press Start 2P', cursive;
+                
+                ul {
+                    list-style: none;                 
+                }
             }
 
             #prevPokemon {
