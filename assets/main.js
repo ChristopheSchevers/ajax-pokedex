@@ -8,8 +8,8 @@ document.getElementById("button").addEventListener("click", loadPokemon);
 
 // Function to get API of input pokemon
 function loadPokemon() {
-    // Fetch search input
-    let pokemon = document.getElementById("search").value;
+    // Fetch search input and set to lower case
+    let pokemon = document.getElementById("search").value.toLowerCase();
     
     // Declare variable for XML Http Request
     const xhr = new XMLHttpRequest();
