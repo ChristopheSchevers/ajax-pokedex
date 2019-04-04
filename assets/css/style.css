@@ -2,6 +2,7 @@
 body, html {
   padding: 0;
   margin: 0;
+  background-color: #a8c9ff;
 }
 
 .rounded {
@@ -14,6 +15,7 @@ body, html {
   width: 600px;
 }
 .wrapper .pokedex {
+  margin-top: 10px;
   background-color: red;
   border: 4px solid #222;
   border-radius: 20px;
